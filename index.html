@@ -82,7 +82,29 @@
 
                             <a href="https://mariellafm.blogspot.com" target="_blank"><img src="img/tiktok.png" alt="instagram" width="48" height="48"></a>
                             <a href="https://wa.me/51945949802" target="_blank"><img src="img/whatsapp.png" alt="whatsapp" width="48" height="48"></a>
-			    <a href="https://reproduc.github.io/MarielaApp" target="_blank"><img src="img/compartir.png" alt="Compartir" width="48" height="48"></a>
+			     <button id="button"><img src="img/compartir.png" alt="compartir" width="48" height="48"></button>
+  </main>
+  <script>
+    const $button = document.querySelector('#button')
+    if ('share' in navigator) {
+      $button.addEventListener('click', share)
+      function share() {
+        navigator.share({
+          title: 'Probando Share API',
+          text: 'Suscríbete a Youtube.com/LeonidasEsteban',
+          url: './thumb.jpg',
+        })
+        .then(()=>{
+          alert('hemos logrado compartir')
+        })
+        .catch(()=>{
+          alert('no se pudo compartir, prueba usando https en un navegador móvil')
+        })
+      }
+    } else {
+      alert('No está disponible el API de web share')
+    }
+  </script>
 
                             </li>
                         <p>Mariela FM 104.1 - Te Acompaña</p>
